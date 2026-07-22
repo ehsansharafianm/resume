@@ -40,6 +40,11 @@
   .role-title { font-weight: 700; color: oklch(20% 0 0); }
   .role-org { font-weight: 500; color: oklch(38% 0.10 231); }
   .role-meta { font-size: 12.55px; color: oklch(45% 0 0); white-space: nowrap; }
+
+  /* Two-column header row: flexible left content + fixed right-aligned date column */
+  .hrow { display: flex; align-items: baseline; gap: 18px; }
+  .hrow > :first-child { flex: 1 1 auto; min-width: 0; }
+  .hrow > .role-meta { flex: 0 0 135px; text-align: right; }
   ul.bullets { margin: 3.55px 0 0 0; padding-left: 17.77px; }
   ul.bullets li { margin: 0 0 3.55px 0; }
   a { color: oklch(38% 0.10 231); text-decoration: none; }
@@ -131,7 +136,7 @@
     <div class="section-title">Research &amp; Engineering Experience</div>
 
     <div style="margin-bottom:13.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">Graduate Research Assistant</span><span> | </span><span class="role-org">Biorobotics and Biomechanics Lab, University of Maine</span></div>
         <div class="role-meta">Sep 2023 – Present</div>
       </div>
@@ -146,7 +151,7 @@
     </div>
 
     <div style="margin-bottom:13.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">Mechanical and Control Systems Engineer</span><span> | </span><span class="role-org">Sina Robotics and Medical Innovators Co.</span></div>
         <div class="role-meta">Dec 2022 – Sep 2023</div>
       </div>
@@ -159,7 +164,7 @@
     </div>
 
     <div style="margin-bottom:13.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">Laboratory Research Assistant</span><span> | </span><span class="role-org">New Technology Research Center, Amirkabir University of Technology</span></div>
         <div class="role-meta">Nov 2020 – Nov 2022</div>
       </div>
@@ -174,21 +179,21 @@
   <div style="margin-bottom:17.77px;">
     <div class="section-title">Education</div>
     <div style="margin-bottom:8.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">Ph.D. in Mechanical Engineering</span><span> | </span><span class="role-org">University of Maine, Orono, ME</span></div>
         <div class="role-meta">Expected Dec 2027</div>
       </div>
       <div style="font-size:12.22px; color:oklch(38% 0 0);">GPA: 4.00/4.00 | Dissertation: Smart Real-Time Gait Training System</div>
     </div>
     <div style="margin-bottom:8.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">M.S. in Mechanical Engineering, Robotics and Control Systems</span><span> | </span><span class="role-org">Amirkabir University of Technology (Tehran Polytechnic)</span></div>
         <div class="role-meta">Feb 2020</div>
       </div>
       <div style="font-size:12.22px; color:oklch(38% 0 0);">GPA: 3.65/4.00 | Thesis: Trajectory optimization of a robot arm in joint and Cartesian spaces</div>
     </div>
     <div style="margin-bottom:8.33px;" class="entry">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+      <div class="hrow">
         <div><span class="role-title">B.S. in Mechanical Engineering</span><span> | </span><span class="role-org">University of Tehran</span></div>
         <div class="role-meta">Jul 2017</div>
       </div>
@@ -198,11 +203,11 @@
 
   <div style="margin-bottom:17.77px;" class="entry">
     <div class="section-title">Selected Honors</div>
-    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px;">
+    <div class="hrow">
       <div>Flagship Fellowship Award, University of Maine</div>
       <div class="role-meta">Sep 2024 &ndash; Sep 2025</div>
     </div>
-    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:9.55px; margin-top:3.55px;">
+    <div class="hrow" style="margin-top:3.55px;">
       <div>Graduate Student Government Award for conference proposal</div>
       <div class="role-meta">Mar 2025</div>
     </div>
