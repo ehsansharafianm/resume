@@ -5,9 +5,9 @@ Mechanical Engineering PhD Candidate — Wearable Systems & Digital Health.
 Two versions, same content and design — pick whichever fits the application:
 
 - **[index.html](index.html)** — **two-page** version, larger and more readable fonts (primary).
-  - PDF: **[CV_Ehsan Sharafian (2 pages).pdf](CV_Ehsan%20Sharafian%20(2%20pages).pdf)**
+  - PDF: **[Ehsan-Sharafian-CV.pdf](Ehsan-Sharafian-CV.pdf)**
 - **[resume-1page.html](resume-1page.html)** — **one-page** compact version, everything on a single sheet.
-  - PDF: **[CV_Ehsan Sharafian.pdf](CV_Ehsan%20Sharafian.pdf)**
+  - PDF: **[Ehsan-Sharafian-CV-one-page.pdf](Ehsan-Sharafian-CV-one-page.pdf)**
 
 All files are plain HTML/CSS — no build step, no dependencies.
 
