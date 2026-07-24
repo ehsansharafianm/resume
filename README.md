@@ -2,23 +2,17 @@
 
 Mechanical Engineering PhD Candidate — Wearable Systems & Digital Health.
 
-Two versions, same content and design — pick whichever fits the application:
-
-- **[index.html](index.html)** — **two-page** version, larger and more readable fonts (primary).
-  - PDF: **[Ehsan-Sharafian-CV.pdf](Ehsan-Sharafian-CV.pdf)**
-- **[resume-1page.html](resume-1page.html)** — **one-page** compact version, everything on a single sheet.
-  - PDF: **[Ehsan-Sharafian-CV-one-page.pdf](Ehsan-Sharafian-CV-one-page.pdf)**
-
-All files are plain HTML/CSS — no build step, no dependencies.
+- **[index.html](index.html)** — the resume source, plain HTML/CSS (no build step, no dependencies). Open it in any browser to view or print.
+- **[Ehsan-Sharafian-Resume.pdf](Ehsan-Sharafian-Resume.pdf)** — two-page PDF export.
 
 ## Editing
 
-Open the `.html` file in any text editor, make changes, then open it in a browser to preview.
+Open `index.html` in any text editor, make changes, then open it in a browser to preview.
 
-## Regenerating a PDF
+## Regenerating the PDF
 
-Open the `.html` file in **Chrome**, press `Cmd/Ctrl+P`, then:
+Open `index.html` in **Chrome**, press `Cmd/Ctrl+P`, then:
 - Destination: **Save as PDF**
 - Paper size: **Letter**
-- Margins: **None** (for the one-page) / **Default** (for the two-page)
+- Margins: **Default**
 - **Background graphics: on** (so the blue accent color renders)
