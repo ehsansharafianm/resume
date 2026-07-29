@@ -375,6 +375,65 @@ def wizard_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def master_command(args: argparse.Namespace) -> int:
+    output_pdf = None if args.skip_pdf else PROJECT_ROOT / "Ehsan-Sharafian-Resume.pdf"
+    output_html = SYSTEM_ROOT / "index.html"
+    render_resume(
+        DEFAULT_MASTER,
+        output_html,
+        output_pdf,
+        browser_path=args.browser,
+    )
+    print(f"Generated master HTML: {output_html}")
+    if output_pdf:
+        print(f"Generated master PDF:  {output_pdf}")
+    return 0
+
+
+def menu_command(args: argparse.Namespace) -> int:
+    while True:
+        print("=" * 60)
+        print("                 Custom Resume Manager")
+        print("=" * 60)
+        print("")
+        print("1. Create a tailored job application")
+        print("2. Render the master resume")
+        print("3. Exit")
+        print("")
+        choice = input("Choose an option [1-3]: ").strip()
+
+        if choice == "1":
+            print("")
+            return wizard_command(argparse.Namespace(browser=args.browser))
+
+        if choice == "2":
+            print("")
+            pdf_choice = input("Generate the master PDF now? [Y/n]: ").strip().lower()
+            master_args = argparse.Namespace(
+                browser=args.browser,
+                skip_pdf=pdf_choice in {"n", "no"},
+            )
+            print("")
+            try:
+                result = master_command(master_args)
+            except (ResumeError, OSError, subprocess.SubprocessError) as exc:
+                print(f"Error: {exc}", file=sys.stderr)
+                result = 1
+            print("")
+            input("Press Enter to close this window...")
+            return result
+
+        if choice == "3":
+            print("")
+            print("Resume manager closed.")
+            input("Press Enter to close this window...")
+            return 0
+
+        print("")
+        print("Please enter 1, 2, or 3.")
+        print("")
+
+
 def render_command(args: argparse.Namespace) -> None:
     output_pdf = None if args.skip_pdf else Path(args.output_pdf).resolve()
     render_resume(
@@ -432,6 +491,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     migrate.add_argument("--quiet", action="store_true")
     migrate.set_defaults(handler=migrate_application_launchers)
+
+    menu = subparsers.add_parser(
+        "menu", help="Open the interactive resume manager."
+    )
+    menu.add_argument("-Browser", "--browser", default=None)
+    menu.set_defaults(handler=menu_command)
+
+    master = subparsers.add_parser(
+        "master", help="Render the master resume into HTML and PDF."
+    )
+    master.add_argument("-Browser", "--browser", default=None)
+    master.add_argument("-SkipPdf", "--skip-pdf", action="store_true")
+    master.set_defaults(handler=master_command)
 
     render = subparsers.add_parser(
         "render", help="Render one YAML resume into HTML and PDF."
