@@ -62,7 +62,19 @@ This regenerates the repository's main `index.html`, `resume.css`, and
 
 ## Create a job-specific resume
 
-For example:
+Double-click `New-Application.cmd` to open the interactive wizard. It asks for:
+
+1. company name;
+2. role or position title;
+3. job URL;
+4. application date;
+5. whether to generate the PDF immediately;
+6. confirmation before creating anything.
+
+The window remains open after rendering so success messages or errors can be
+read.
+
+The command-line mode remains available for automation. For example:
 
 ```cmd
 New-Application.cmd -Company "Medtronic" -Role "Biomechanics Engineer" -JobUrl "https://example.com/job/12345"
