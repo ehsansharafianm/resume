@@ -7,7 +7,9 @@
   {% if application.company %}<meta name="application-company" content="{{ application.company }}">{% endif %}
   {% if application.role %}<meta name="application-role" content="{{ application.role }}">{% endif %}
   <title>{{ resume.name }} - Resume{% if application.role %} - {{ application.role }}{% endif %}</title>
-  <link rel="stylesheet" href="resume.css">
+  <style>
+{{ stylesheet | safe }}
+  </style>
 </head>
 <body>
   {% macro contact_icon(kind) -%}
@@ -29,7 +31,6 @@
   <main class="resume">
     <header class="resume-header">
       <h1>{{ resume.name }}</h1>
-      {% if resume.headline %}<p class="headline">{{ resume.headline }}</p>{% endif %}
       <div class="contact-grid">
         {% for item in resume.contact %}
           <a class="contact-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">

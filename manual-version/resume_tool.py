@@ -24,8 +24,9 @@ except ImportError as exc:
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_TEMPLATE = PROJECT_ROOT / "templates" / "resume.html.j2"
-DEFAULT_STYLESHEET = PROJECT_ROOT / "styles" / "resume.css"
+SYSTEM_ROOT = PROJECT_ROOT / "system"
+DEFAULT_TEMPLATE = SYSTEM_ROOT / "resume.html.j2"
+DEFAULT_STYLESHEET = SYSTEM_ROOT / "resume.css"
 DEFAULT_MASTER = PROJECT_ROOT / "master" / "Ehsan_Sharafian_Master.yaml"
 
 
@@ -92,9 +93,13 @@ def render_html(
     environment.filters["richtext"] = richtext
     template = environment.get_template(template_path.name)
 
+    stylesheet = stylesheet_path.read_text(encoding="utf-8")
     output_html.parent.mkdir(parents=True, exist_ok=True)
-    output_html.write_text(template.render(**data), encoding="utf-8", newline="\n")
-    shutil.copy2(stylesheet_path, output_html.parent / "resume.css")
+    output_html.write_text(
+        template.render(**data, stylesheet=stylesheet),
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def find_browser(explicit_browser: str | None = None) -> Path:
@@ -239,20 +244,6 @@ def create_application(args: argparse.Namespace) -> None:
     }
     write_yaml(application_yaml, data)
 
-    job_notes = (
-        f"# {args.company} - {args.role}\n\n"
-        f"- Application date: {application_date.isoformat()}\n"
-        "- Status: Preparing\n"
-        f"- Job URL: {args.job_url}\n"
-        "- Resume file: resume.pdf\n\n"
-        "## Important requirements\n\n-\n\n"
-        "## Tailoring decisions\n\n-\n\n"
-        "## Follow-up\n\n-\n"
-    )
-    (application_folder / "job.md").write_text(
-        job_notes, encoding="utf-8", newline="\n"
-    )
-
     render_command = (
         "@echo off\n"
         'python "%~dp0..\\..\\..\\resume_tool.py" render '
@@ -277,11 +268,9 @@ def create_application(args: argparse.Namespace) -> None:
     print("")
     print("Files:")
     print("  resume.yaml  - edit job-specific content here")
-    print("  index.html   - browser preview")
-    print("  resume.css   - rendered style snapshot")
+    print("  index.html   - self-contained browser preview")
     if output_pdf:
         print("  resume.pdf   - submission-ready PDF")
-    print("  job.md       - job requirements and status")
     print("  Render.cmd   - re-render after editing YAML")
 
 
