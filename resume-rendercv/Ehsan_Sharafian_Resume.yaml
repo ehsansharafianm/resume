@@ -1,0 +1,133 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: Ehsan Sharafian
+  location: Orono, ME
+  email: ehsan.sharafian@maine.edu
+  phone: +1-207-631-6979
+  website: https://ehsansharafian.com
+  social_networks:
+    - network: LinkedIn
+      username: ehsan-sharafian-m
+    - network: GitHub
+      username: ehsansharafianm
+  sections:
+    Professional Summary:
+      - Mechanical Engineering PhD candidate specializing in intelligent wearable systems for human movement analysis and digital health. Experienced in building end-to-end solutions that integrate IMU-based sensing, embedded hardware, smartphone applications, machine learning, and haptic feedback for gait analysis and rehabilitation. Skilled in Python, MATLAB, Android Studio/Java, and PyTorch, with six peer-reviewed journal publications.
+
+    Education:
+      - institution: University of Maine
+        area: Mechanical Engineering
+        degree: PhD
+        location: Orono, ME
+        date: Expected Dec 2027
+        highlights:
+          - "GPA: 4.00/4.00"
+          - "Dissertation: Smart Real-Time Gait Training System"
+      - institution: Amirkabir University of Technology (Tehran Polytechnic)
+        area: Mechanical Engineering
+        degree: MS
+        date: Feb 2020
+        highlights:
+          - "GPA: 3.65/4.00"
+          - "Thesis: Trajectory optimization of a robot arm in joint and Cartesian spaces"
+      - institution: University of Tehran
+        area: Mechanical Engineering
+        degree: BS
+        date: Jul 2017
+
+    Technical Skills:
+      - label: Programming & Data Analysis
+        details: Python, Java, C/C++, NumPy, Pandas, scikit-learn, PyTorch, SPSS
+      - label: Mobile & Software
+        details: MATLAB, Simulink, TwinCAT, Android Studio, Unity, Git
+      - label: Wearable & Embedded Systems
+        details: IMU sensors, Arduino IDE, SparkFun modules, vibrotactile motors, PCB modules
+      - label: Biomechanics & Signal Processing
+        details: Gait analysis, human activity recognition, sensor fusion, feature extraction, OpenSim
+      - label: Robotics
+        details: Surgical robotics, parallel manipulators, inverse kinematics, dynamics, control systems
+      - label: CAD
+        details: SolidWorks
+
+    Research & Engineering Experience:
+      - company: Biorobotics and Biomechanics Lab, University of Maine
+        position: Graduate Research Assistant
+        location: Orono, ME
+        start_date: 2023-09
+        end_date: present
+        highlights:
+          - Led the development of real-time wearable sensing systems and Android-based mobile applications for gait analysis, activity recognition, fall-risk assessment, and home-based rehabilitation using IMUs, haptic feedback, and smartphone-deployed feedback platforms.
+          - Built a smartphone-deployed gait assessment system using a single foot-mounted IMU to reconstruct foot-height trajectories, achieving **96.08% locomotion classification accuracy**, **less than 1.1 cm cumulative height error**, and **112 ms latency**.
+          - Engineered a lightweight human activity recognition system using two IMUs, biomechanical feature extraction, and supervised classifiers including SVM and Naive Bayes, achieving **99.1% accuracy** for normal locomotion and **93.1% accuracy** for atypical stair-negotiation strategies in older adults.
+          - Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, Arduino/SparkFun modules, and PCB circuitry for adults aged 65+.
+          - Demonstrated up to **30% improvement** in stride length and walking speed during a single-session haptic feedback study, with minimal cognitive demand.
+          - Led IRB-approved human-subject validation studies with **85+ participants** across gait analysis, activity recognition, and haptic feedback protocols.
+          - Developed real-time algorithms and data pipelines in Android Studio/Java, Python, and MATLAB, combining signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.
+      - company: Sina Robotics and Medical Innovators Co.
+        position: Mechanical and Control Systems Engineer
+        location: Tehran, Iran
+        start_date: 2022-12
+        end_date: 2023-09
+        highlights:
+          - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT and IEC 61131-3 Structured Text, with MATLAB/Simulink validation of inverse kinematics and initialization workflows.
+          - Built a Python/Kivy graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
+          - Coordinated hands-on validation sessions with **6 experienced surgeons**, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.
+      - company: New Technology Research Center, Amirkabir University of Technology
+        position: Laboratory Research Assistant
+        location: Tehran, Iran
+        start_date: 2020-11
+        end_date: 2022-11
+        highlights:
+          - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
+          - Mentored **6 undergraduate students** across **5 research teams**, guiding equipment use, troubleshooting, documentation, and project execution.
+          - Coordinated technical preparation for the **9th International Conference on Robotics and Mechatronics**, including lab demonstrations, equipment readiness, and presentation logistics.
+
+    Selected Honors:
+      - name: Flagship Fellowship Award, University of Maine
+        date: Sep 2024 – Sep 2025
+      - name: Graduate Student Government Award for conference proposal
+        date: Mar 2025
+
+    Leadership & Service:
+      - company: Department of Mechanical Engineering, University of Maine
+        position: Graduate Senator
+        start_date: 2025-09
+        end_date: present
+      - company: Iranian Graduate Student Association, University of Maine
+        position: President
+        start_date: 2024-09
+        end_date: 2026-04
+
+    Publications:
+      - bullet: "**6 peer-reviewed journal articles** (3 first-author) in wearable sensing, biomechanics, rehabilitation engineering, and robotics."
+      - bullet: "**Sensors** (2026) – Real-time foot-height estimation and activity classification"
+      - bullet: "**IEEE Access** (2025) – Lightweight IMU-based activity recognition for older adults"
+      - bullet: "**IEEE TNSRE** (2025) – Haptic feedback effects on gait and cognitive load"
+      - bullet: "**Journal of Biomechanics** (2025) – Thigh extension and leg coordination"
+      - bullet: "**International Journal of Robotics and Automation** (2023) – Trajectory optimization of a robot arm"
+      - bullet: "**Robotica** (2022) – Screw theory-based constraint wrench analysis"
+
+design:
+  theme: classic
+  page:
+    size: us-letter
+    top_margin: 1.27cm
+    bottom_margin: 1.27cm
+    left_margin: 1.27cm
+    right_margin: 1.27cm
+    show_footer: false
+  colors:
+    name: rgb(0, 74, 109)
+    connections: rgb(0, 74, 109)
+    section_titles: rgb(0, 74, 109)
+    links: rgb(0, 74, 109)
+  templates:
+    experience_entry:
+      main_column: |-
+        **POSITION**, COMPANY
+        SUMMARY
+        HIGHLIGHTS
+
+settings:
+  render_command:
+    pdf_path: Ehsan-Sharafian-Resume.pdf
