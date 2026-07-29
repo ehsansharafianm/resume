@@ -17,13 +17,13 @@ manual-version/
 |           |-- resume.pdf           # submission version
 |           `-- Render.cmd           # rebuild this application
 |-- system/
+|   |-- resume_tool.py               # renderer and application wizard
 |   |-- resume.html.j2               # semantic document structure
 |   |-- resume.css                   # professional screen and print design
+|   |-- index.html                   # rendered master preview
 |   `-- requirements.txt             # Python dependencies
-|-- resume_tool.py                   # renderer; kept here for existing applications
 |-- New-Application.cmd              # interactive application wizard
 |-- Render-Master.cmd                # rebuild the master outputs
-|-- index.html                       # rendered master preview
 `-- Ehsan-Sharafian-Resume.pdf       # rendered master PDF
 ```
 
@@ -108,7 +108,7 @@ Then double-click:
 Render-Master.cmd
 ```
 
-This regenerates the top-level `index.html` and
+This regenerates `system\index.html` and the top-level
 `Ehsan-Sharafian-Resume.pdf`.
 
 ## Change the shared design
