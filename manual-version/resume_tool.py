@@ -285,6 +285,89 @@ def create_application(args: argparse.Namespace) -> None:
     print("  Render.cmd   - re-render after editing YAML")
 
 
+def prompt_required(label: str) -> str:
+    while True:
+        value = input(label).strip()
+        if value:
+            return value
+        print("This value is required. Please try again.")
+
+
+def wizard_command(args: argparse.Namespace) -> int:
+    print("=" * 60)
+    print("            Create a tailored resume application")
+    print("=" * 60)
+    print("")
+    print("This wizard copies your master YAML, creates a job folder,")
+    print("and renders the custom HTML resume and PDF.")
+    print("")
+
+    company = prompt_required("Company name: ")
+    role = prompt_required("Role or position title: ")
+    job_url = input("Job URL (optional): ").strip()
+
+    while True:
+        application_date = input(
+            "Application date YYYY-MM-DD (press Enter for today): "
+        ).strip()
+        if not application_date:
+            application_date = date.today().isoformat()
+            break
+        try:
+            parse_date(application_date)
+            break
+        except ResumeError as exc:
+            print(exc)
+
+    pdf_choice = input("Generate PDF now? [Y/n]: ").strip().lower()
+    skip_pdf = pdf_choice in {"n", "no"}
+
+    print("")
+    print("-" * 60)
+    print(f"Company: {company}")
+    print(f"Role:    {role}")
+    if job_url:
+        print(f"URL:     {job_url}")
+    print(f"Date:    {application_date}")
+    print(f"PDF:     {'No - HTML only' if skip_pdf else 'Yes'}")
+    print("-" * 60)
+    print("")
+
+    confirmation = input("Create this application? [Y/n]: ").strip().lower()
+    if confirmation in {"n", "no"}:
+        print("")
+        print("Application creation cancelled.")
+        input("Press Enter to close this window...")
+        return 0
+
+    create_args = argparse.Namespace(
+        company=company,
+        role=role,
+        job_url=job_url,
+        application_date=application_date,
+        master=str(DEFAULT_MASTER),
+        destination_root=str(PROJECT_ROOT / "applications"),
+        browser=args.browser,
+        skip_pdf=skip_pdf,
+    )
+
+    print("")
+    try:
+        create_application(create_args)
+    except (ResumeError, OSError, subprocess.SubprocessError) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        print("")
+        input("Press Enter to close this window...")
+        return 1
+
+    print("")
+    print("Finished. Edit resume.yaml in the new application folder,")
+    print("then run its Render.cmd whenever you want to rebuild it.")
+    print("")
+    input("Press Enter to close this window...")
+    return 0
+
+
 def render_command(args: argparse.Namespace) -> None:
     output_pdf = None if args.skip_pdf else Path(args.output_pdf).resolve()
     render_resume(
@@ -331,6 +414,12 @@ def build_parser() -> argparse.ArgumentParser:
     create.add_argument("-SkipPdf", "--skip-pdf", action="store_true")
     create.set_defaults(handler=create_application)
 
+    wizard = subparsers.add_parser(
+        "wizard", help="Open an interactive job-application wizard."
+    )
+    wizard.add_argument("-Browser", "--browser", default=None)
+    wizard.set_defaults(handler=wizard_command)
+
     render = subparsers.add_parser(
         "render", help="Render one YAML resume into HTML and PDF."
     )
@@ -348,11 +437,11 @@ def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
     try:
-        args.handler(args)
+        result = args.handler(args)
     except (ResumeError, OSError, subprocess.SubprocessError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
-    return 0
+    return int(result or 0)
 
 
 if __name__ == "__main__":
