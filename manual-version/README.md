@@ -22,7 +22,8 @@ manual-version/
 |   |-- resume.css                   # professional screen and print design
 |   |-- index.html                   # rendered master preview
 |   `-- requirements.txt             # Python dependencies
-|-- New-Application.cmd              # single interactive resume manager
+|-- New-Application.cmd              # interactive application wizard
+|-- Render-Master.cmd                # rebuild the master outputs
 `-- Ehsan-Sharafian-Resume.pdf       # rendered master PDF
 ```
 
@@ -45,21 +46,13 @@ renderer automatically checks standard Windows installation locations.
 
 ## Create a job-specific resume interactively
 
-Double-click the single resume manager:
+Double-click:
 
 ```text
 New-Application.cmd
 ```
 
-Choose from:
-
-```text
-1. Create a tailored job application
-2. Render the master resume
-3. Exit
-```
-
-The application wizard asks for:
+The wizard asks for:
 
 1. company name;
 2. role or position title;
@@ -109,22 +102,14 @@ Edit:
 master\Ehsan_Sharafian_Master.yaml
 ```
 
-Then double-click `New-Application.cmd` and choose option 2.
+Then double-click:
+
+```text
+Render-Master.cmd
+```
 
 This regenerates `system\index.html` and the top-level
 `Ehsan-Sharafian-Resume.pdf`.
-
-Command-line mode is also available:
-
-```cmd
-New-Application.cmd master
-```
-
-Render only the master HTML:
-
-```cmd
-New-Application.cmd master -SkipPdf
-```
 
 ## Change the shared design
 
