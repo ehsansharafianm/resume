@@ -82,15 +82,15 @@ resume:
         - Developed real-time algorithms and data pipelines in Android Studio/Java, Python, and MATLAB, combining signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.
     - position: Mechanical and Control Systems Engineer
       organization: Sina Robotics and Medical Innovators Co.
-      location: Tehran, Iran
+      location: 
       date: Dec 2022 - Sep 2023
       highlights:
-        - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT and IEC 61131-3 Structured Text, with MATLAB/Simulink validation of inverse kinematics and initialization workflows.
+        - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT, with Simulink validation of inverse kinematics and initialization workflows.
         - Built a Python/Kivy graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
         - Coordinated hands-on validation sessions with **6 experienced surgeons**, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.
     - position: Laboratory Research Assistant
       organization: New Technology Research Center, Amirkabir University of Technology
-      location: Tehran, Iran
+      location:
       date: Nov 2020 - Nov 2022
       highlights:
         - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
@@ -108,7 +108,7 @@ resume:
       organization: Department of Mechanical Engineering, University of Maine
       date: Sep 2025 - Present
     - position: President
-      organization: Iranian Graduate Student Association, University of Maine
+      organization: Persian Graduate Student Association, University of Maine
       date: Sep 2024 - Apr 2026
 
   publications:
