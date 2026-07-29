@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+﻿# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 cv:
-  name: Ehsan Sharafian
+  name: Ehsan Sharafian M.
   location: Orono, ME
   email: ehsan.sharafian@maine.edu
   phone: +1-207-631-6979
@@ -72,7 +72,6 @@ cv:
           - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT and IEC 61131-3 Structured Text, with MATLAB/Simulink validation of inverse kinematics and initialization workflows.
           - Built a Python/Kivy graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
           - Coordinated hands-on validation sessions with **6 experienced surgeons**, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.
-      
       - company: New Technology Research Center, Amirkabir University of Technology
         position: Laboratory Research Assistant
         location: Tehran, Iran
@@ -100,7 +99,7 @@ cv:
         end_date: 2026-04
 
     Publications:
-      - bullet: "**6 peer-reviewed journal articles** (5 first-author) in wearable sensing, biomechanics, rehabilitation engineering, and robotics."
+      - bullet: "**6 peer-reviewed journal articles** (3 first-author) in wearable sensing, biomechanics, rehabilitation engineering, and robotics."
       - bullet: "**Sensors** (2026) – Real-time foot-height estimation and activity classification"
       - bullet: "**IEEE Access** (2025) – Lightweight IMU-based activity recognition for older adults"
       - bullet: "**IEEE TNSRE** (2025) – Haptic feedback effects on gait and cognitive load"
@@ -131,4 +130,5 @@ design:
 
 settings:
   render_command:
-    pdf_path: Ehsan-Sharafian-Master.pdf
+    pdf_path: resume.pdf
+
