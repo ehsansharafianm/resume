@@ -19,12 +19,12 @@ try:
 except ImportError as exc:
     raise SystemExit(
         "Missing renderer dependencies. Run:\n"
-        '  python -m pip install -r requirements.txt'
+        '  python -m pip install -r system\\requirements.txt'
     ) from exc
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
-SYSTEM_ROOT = PROJECT_ROOT / "system"
+SYSTEM_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = SYSTEM_ROOT.parent
 DEFAULT_TEMPLATE = SYSTEM_ROOT / "resume.html.j2"
 DEFAULT_STYLESHEET = SYSTEM_ROOT / "resume.css"
 DEFAULT_MASTER = PROJECT_ROOT / "master" / "Ehsan_Sharafian_Master.yaml"
@@ -246,7 +246,7 @@ def create_application(args: argparse.Namespace) -> None:
 
     render_command = (
         "@echo off\n"
-        'python "%~dp0..\\..\\..\\resume_tool.py" render '
+        'python "%~dp0..\\..\\..\\system\\resume_tool.py" render '
         '-Input "%~dp0resume.yaml" '
         '-OutputHtml "%~dp0index.html" '
         '-OutputPdf "%~dp0resume.pdf" %*\n'
@@ -272,6 +272,24 @@ def create_application(args: argparse.Namespace) -> None:
     if output_pdf:
         print("  resume.pdf   - submission-ready PDF")
     print("  Render.cmd   - re-render after editing YAML")
+
+
+def migrate_application_launchers(args: argparse.Namespace) -> int:
+    applications_root = PROJECT_ROOT / "applications"
+    old_path = "..\\..\\..\\resume_tool.py"
+    new_path = "..\\..\\..\\system\\resume_tool.py"
+    migrated = 0
+
+    for launcher in applications_root.glob("*/*/Render.cmd"):
+        text = launcher.read_text(encoding="utf-8")
+        updated = text.replace(old_path, new_path)
+        if updated != text:
+            launcher.write_text(updated, encoding="utf-8", newline="\r\n")
+            migrated += 1
+
+    if not args.quiet:
+        print(f"Updated application launchers: {migrated}")
+    return 0
 
 
 def prompt_required(label: str) -> str:
@@ -408,6 +426,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     wizard.add_argument("-Browser", "--browser", default=None)
     wizard.set_defaults(handler=wizard_command)
+
+    migrate = subparsers.add_parser(
+        "migrate", help="Update existing application Render.cmd launchers."
+    )
+    migrate.add_argument("--quiet", action="store_true")
+    migrate.set_defaults(handler=migrate_application_launchers)
 
     render = subparsers.add_parser(
         "render", help="Render one YAML resume into HTML and PDF."
