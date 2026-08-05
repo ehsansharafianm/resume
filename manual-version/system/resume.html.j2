@@ -112,7 +112,7 @@
       <p class="publication-summary">{{ resume.publications.summary | richtext }}</p>
       <ul>
         {% for item in resume.publications["items"] %}
-          <li><strong>{{ item.venue }}</strong> ({{ item.year }}) - {{ item.description }}</li>
+          <li>{{ item.authors | richtext }}. &ldquo;{{ item.title }}.&rdquo; <em>{{ item.venue }}</em> ({{ item.year }}).</li>
         {% endfor %}
       </ul>
     </section>

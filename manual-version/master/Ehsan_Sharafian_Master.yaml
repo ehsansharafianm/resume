@@ -112,21 +112,27 @@ resume:
   publications:
     summary: "**6 peer-reviewed (5 first-author) journal articles** in wearable sensing, biomechanics, rehabilitation engineering, and robotics."
     items:
-      - venue: Sensors
+      - authors: "**Ehsan Sharafian**, Babak Hejrati"
+        title: Real-Time Foot Height Estimation and Activity Classification Using a Foot-Mounted IMU Implemented on a Smartphone
+        venue: Sensors
         year: "2026"
-        description: Foot-height estimation and locomotion classification using a foot-mounted IMU and smartphone.
-      - venue: IEEE Access
+      - authors: "**Ehsan Sharafian**, Colby Ellis, Babak Hejrati"
+        title: "Real-Time Activity Recognition Using Minimal Biomechanical Features: A Lightweight IMU-Based Classifier for Older Adults"
+        venue: IEEE Access
         year: "2025"
-        description: IMU-based activity recognition for older adults using minimal biomechanical features.
-      - venue: IEEE TNSRE
+      - authors: "**Ehsan Sharafian**, Colby Ellis, Ben Sidaway, Marie Hayes, Babak Hejrati"
+        title: The Effects of Real-Time Haptic Feedback on Gait and Cognitive Load in Older Adults
+        venue: IEEE Transactions on Neural Systems and Rehabilitation Engineering
         year: "2025"
-        description: Real-time haptic feedback effects on gait performance and cognitive load.
-      - venue: Journal of Biomechanics
+      - authors: "Mohsen Noghani, **Ehsan Sharafian**, Ben Sidaway, Babak Hejrati"
+        title: Increasing Thigh Extension with Haptic Feedback Affects Leg Coordination in Young and Older Adult Walkers
+        venue: Journal of Biomechanics
         year: "2025"
-        description: Thigh extension and leg coordination in young and older adult walkers.
-      - venue: International Journal of Robotics and Automation
+      - authors: "**Ehsan Sharafian**, Maryam Ghassabzadeh, Afshin Taghvaeipour"
+        title: Trajectory Optimization of a Spot-Welding Robot in the Joint and Cartesian Spaces
+        venue: International Journal of Robotics and Automation
         year: "2023"
-        description: Robot-arm trajectory optimization for production-line applications.
-      - venue: Robotica
+      - authors: "**Ehsan Sharafian**, Afshin Taghvaeipour, Maryam Ghassabzadeh"
+        title: Revisiting Screw Theory-Based Approaches in the Constraint Wrench Analysis of Robotic Systems
+        venue: Robotica
         year: "2022"
-        description: Screw theory-based constraint wrench analysis for a Delta manipulator.
