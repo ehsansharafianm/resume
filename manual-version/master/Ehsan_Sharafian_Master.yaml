@@ -55,13 +55,13 @@ resume:
 
   skills:
     - category: Programming & Data Analysis
-      details: Python, Java, C/C++, NumPy, Pandas, scikit-learn, PyTorch, SPSS
+      details: Python, Java, C/C++, NumPy, scikit-learn, PyTorch, SPSS
     - category: Mobile & Software
       details: MATLAB, Simulink, TwinCAT, Android Studio, Unity, Git
     - category: Wearable & Embedded Systems
-      details: IMU sensors, Arduino IDE, SparkFun modules, vibrotactile motors, PCB modules
+      details: IMU sensors, Arduino IDE, SparkFun modules, PCB modules
     - category: Biomechanics & Signal Processing
-      details: Gait analysis, human activity recognition, sensor fusion, feature extraction, OpenSim
+      details: Gait analysis, human activity recognition, feature extraction, OpenSim
     - category: Robotics
       details: Surgical robotics, parallel manipulators, inverse kinematics, dynamics, control systems
     - category: CAD
@@ -73,20 +73,20 @@ resume:
       location: Orono, ME
       date: Sep 2023 - Present
       highlights:
-        - Development of real-time wearable sensing systems and Android-based mobile applications for gait analysis, activity recognition, fall-risk assessment, and home-based rehabilitation.
-        - Built a smartphone-deployed gait assessment system using a single foot-mounted IMU to reconstruct foot-height trajectories and classify terrains across level walking, stairs, and ramps, achieving **96% accuracy**, **<1.1 cm error**, and **112 ms latency**.
-        - Engineered a lightweight human activity recognition system using two IMUs, biomechanical feature extraction, and classifiers including SVM and NB, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation strategies in older adults.
-        - Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, Arduino/SparkFun modules, and PCB circuitry for adults aged 65+.
-        - Demonstrated up to **30% improvement** in stride length and walking speed during a single-session haptic feedback study, with minimal cognitive demand.
-        - Led IRB-approved human-subject validation studies with **85+ participants** across gait analysis, activity recognition, and haptic feedback protocols.
-        - Developed real-time algorithms and data pipelines in Android Studio/Java, Python, and MATLAB, combining signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.
+        - Development of real-time wearable sensing systems and Android-based mobile applications for gait analysis, activity recognition, and home-based rehabilitation.
+        - Designed a smartphone-deployed gait assessment system using a foot-mounted IMU to reconstruct foot-height trajectories and classify level walking, stairs, and ramps, achieving **96% accuracy**, **<1.1 cm error**, and **112 ms latency**.
+        - Development a lightweight human activity recognition system using two IMUs, and classifier, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation strategies in older adults.
+        - Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, SparkFun modules, and PCB circuitry for adults aged 65+.
+        - Demonstrated up to **30% improvement** in stride length and walking speed during a haptic feedback study, with minimal cognitive demand.
+        - Human-subject validation studies with **85+ participants** across gait analysis, and haptic feedback protocols.
+        - Developed real-time algorithms and data pipelines in Java, Python, and MATLAB, signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.
     - position: Mechanical and Control Systems Engineer
       organization: Sina Robotics and Medical Innovators Co.
       location: 
       date: Dec 2022 - Sep 2023
       highlights:
-        - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT, with Simulink validation of inverse kinematics and initialization workflows.
-        - Built a Python/Kivy graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
+        - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT, with Simulink validation of inverse kinematics.
+        - Built a Python graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
         - Coordinated hands-on validation sessions with **6 experienced surgeons**, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.
     - position: Laboratory Research Assistant
       organization: New Technology Research Center, Amirkabir University of Technology
@@ -95,8 +95,6 @@ resume:
       highlights:
         - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
         - Mentored 6 undergraduate students across 5 research teams, guiding equipment use, troubleshooting, documentation, and project execution.
-        - Coordinated technical preparation for the 9th International Conference on Robotics and Mechatronics, including lab demonstrations, equipment readiness, and presentation logistics.
-
   honors:
     - name: Flagship Fellowship Award, University of Maine
       date: Sep 2024 - Sep 2025
