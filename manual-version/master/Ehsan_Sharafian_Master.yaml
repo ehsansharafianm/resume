@@ -70,13 +70,13 @@ resume:
       location: Orono, ME
       date: Sep 2023 - Present
       highlights:
-        - Development of real-time wearable sensing systems and Android-based mobile applications for gait analysis, activity recognition, and home-based rehabilitation.
-        - Designed a smartphone-deployed gait assessment system using a foot-mounted IMU to reconstruct foot-height trajectories and classify level walking, stairs, and ramps, achieving **96% accuracy**, **<1.1 cm error**, and **112 ms latency**.
-        - Development a lightweight human activity recognition system using two IMUs, and classifier, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation strategies in older adults.
+        - Development of real-time wearable sensing systems and Android-based applications for gait analysis, activity recognition, and home-based rehabilitation.
+        - Designed a smartphone-deployed system using a foot-mounted IMU to reconstruct foot trajectories and classify level walking, stairs, and ramps, achieving **96% accuracy**, **<1.1 cm error**, and **112 ms latency**.
+        - Development a lightweight human activity recognition system using two IMUs, and classifier, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation pattern in older adults.
         - Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, SparkFun modules, and PCB circuitry for adults aged 65+.
-        - Demonstrated up to **30% improvement** in stride length and walking speed during a haptic feedback study, with minimal cognitive demand.
-        - Human-subject validation studies with **85+ participants** across gait analysis, and haptic feedback protocols.
-        - Developed real-time algorithms and data pipelines in Java, Python, and MATLAB, signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.
+        - Demonstrated up to **30% improvement** in walking speed using the haptic feedback  system, with minimal cognitive demand.
+        - Human-subject validation studies with **85+ participants** across gait analysis.
+        - Implemented real-time algorithms in Java, Python, and MATLAB for signal processing, sensor fusion, biomechanical modeling, and machine learning in mobile health applications.
     - position: Mechanical and Control Systems Engineer
       organization: Sina Robotics and Medical Innovators Co.
       location: 
