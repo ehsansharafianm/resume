@@ -226,14 +226,32 @@ a:hover {
 
 @media print {
   :root {
+    --ink: #0b0f14;
+    --muted: #27313a;
+    --accent: #004f73;
     --canvas: #ffffff;
   }
 
   html,
   body {
     background: #ffffff;
+    color: var(--ink);
     margin: 0;
     padding: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  h1 {
+    color: #000000;
+  }
+
+  .contact-item {
+    color: #1f2933;
+  }
+
+  .separator {
+    color: #374151;
   }
 
   .resume {
