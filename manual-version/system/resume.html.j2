@@ -99,10 +99,23 @@
 
     <section>
       <h2>Leadership &amp; Service</h2>
+
       {% for item in resume.leadership %}
-        <div class="dated-row">
-          <span><strong>{{ item.position }}</strong>, {{ item.organization }}</span>
-          <span class="date">{{ item.date }}</span>
+        <div class="leadership-entry">
+          <div class="dated-row">
+            <span>
+              <strong>{{ item.position }}</strong>, {{ item.organization }}
+            </span>
+            <span class="date">{{ item.date }}</span>
+          </div>
+
+          {% if item.highlights %}
+            <ul>
+              {% for highlight in item.highlights %}
+                <li>{{ highlight | richtext }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
       {% endfor %}
     </section>

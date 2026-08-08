@@ -29,12 +29,9 @@ resume:
       url: https://scholar.google.com/citations?user=IF_W5kkAAAAJ&hl=en&oi=ao
 
   summary: >-
-    Mechanical Engineering PhD candidate specializing in intelligent wearable
-    systems for human movement analysis and digital health. Experienced in
-    building end-to-end solutions that integrate IMU-based sensing, embedded
-    hardware, smartphone applications, machine learning, and haptic feedback
-    for gait analysis and rehabilitation. Skilled in Python, MATLAB, Android
-    Studio/Java, and PyTorch, with six peer-reviewed journal publications.
+    Mechanical Engineering PhD candidate seeking an internship in  wearable technology.
+     Experienced in developing integrated wearable systems for gait analysis and rehabilitation using IMU sensing, embedded hardware, smartphone applications, 
+     machine learning, and haptic feedback. Proficient in Python, MATLAB, Java, and PyTorch, with six peer-reviewed journal publications.
 
   education:
     - degree: Ph.D. in Mechanical Engineering
@@ -105,9 +102,13 @@ resume:
     - position: Graduate Senator
       organization: Department of Mechanical Engineering, University of Maine
       date: Sep 2025 - Present
+      highlights:
+        - Represent graduate student concerns in senate meetings and support academic programs.
     - position: President
       organization: Persian Graduate Student Association, University of Maine
       date: Sep 2024 - Apr 2026
+      highlights:
+        - Organized Persian cultural and community events, including Nowruz celebrations with **150+ attendees**.
 
   publications:
     summary: "**6 peer-reviewed (5 first-author) journal articles** in wearable sensing, biomechanics, rehabilitation engineering, and robotics."

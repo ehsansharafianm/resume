@@ -247,3 +247,16 @@ a:hover {
     color: inherit;
   }
 }
+
+.leadership-entry {
+  break-inside: avoid;
+  margin-bottom: 6px;
+}
+
+.leadership-entry:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-entry ul {
+  margin-top: 2px;
+}
