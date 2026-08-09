@@ -215,6 +215,48 @@ def parse_date(value: str) -> date:
         raise ResumeError("Application date must use YYYY-MM-DD format.") from exc
 
 
+RENDER_CMD_CONTENT = (
+    "@echo off\n"
+    'python "%~dp0..\\..\\..\\system\\resume_tool.py" render '
+    '-Input "%~dp0resume.yaml" '
+    '-OutputHtml "%~dp0index.html" '
+    '-OutputPdf "%~dp0resume.pdf" %*\n'
+)
+
+RENDER_COMMAND_CONTENT = (
+    "#!/bin/bash\n"
+    "# Re-render this application on macOS and Linux.\n"
+    "# Double-click in Finder (macOS) or run from a terminal.\n"
+    "# The Windows equivalent is Render.cmd.\n"
+    'DIR="$(cd "$(dirname "$0")" && pwd)"\n'
+    "if command -v python3 >/dev/null 2>&1; then\n"
+    "  PY=python3\n"
+    "elif command -v python >/dev/null 2>&1; then\n"
+    "  PY=python\n"
+    "else\n"
+    '  echo "Python 3 was not found. Install it from '
+    'https://www.python.org/downloads/ and try again."\n'
+    "  exit 1\n"
+    "fi\n"
+    '"$PY" "$DIR/../../../system/resume_tool.py" render '
+    '-Input "$DIR/resume.yaml" '
+    '-OutputHtml "$DIR/index.html" '
+    '-OutputPdf "$DIR/resume.pdf" "$@"\n'
+)
+
+
+def write_render_launchers(application_folder: Path) -> None:
+    """Write the Windows (.cmd) and macOS/Linux (.command) render launchers."""
+    (application_folder / "Render.cmd").write_text(
+        RENDER_CMD_CONTENT, encoding="utf-8", newline="\r\n"
+    )
+    command_launcher = application_folder / "Render.command"
+    command_launcher.write_text(
+        RENDER_COMMAND_CONTENT, encoding="utf-8", newline="\n"
+    )
+    command_launcher.chmod(0o755)
+
+
 def create_application(args: argparse.Namespace) -> None:
     application_date = parse_date(args.application_date)
     master_path = Path(args.master).resolve()
@@ -244,16 +286,7 @@ def create_application(args: argparse.Namespace) -> None:
     }
     write_yaml(application_yaml, data)
 
-    render_command = (
-        "@echo off\n"
-        'python "%~dp0..\\..\\..\\system\\resume_tool.py" render '
-        '-Input "%~dp0resume.yaml" '
-        '-OutputHtml "%~dp0index.html" '
-        '-OutputPdf "%~dp0resume.pdf" %*\n'
-    )
-    (application_folder / "Render.cmd").write_text(
-        render_command, encoding="utf-8", newline="\r\n"
-    )
+    write_render_launchers(application_folder)
 
     output_pdf = None if args.skip_pdf else application_folder / "resume.pdf"
     render_resume(
@@ -279,6 +312,7 @@ def migrate_application_launchers(args: argparse.Namespace) -> int:
     old_path = "..\\..\\..\\resume_tool.py"
     new_path = "..\\..\\..\\system\\resume_tool.py"
     migrated = 0
+    added_command = 0
 
     for launcher in applications_root.glob("*/*/Render.cmd"):
         text = launcher.read_text(encoding="utf-8")
@@ -287,8 +321,17 @@ def migrate_application_launchers(args: argparse.Namespace) -> int:
             launcher.write_text(updated, encoding="utf-8", newline="\r\n")
             migrated += 1
 
+        command_launcher = launcher.with_name("Render.command")
+        if not command_launcher.exists():
+            command_launcher.write_text(
+                RENDER_COMMAND_CONTENT, encoding="utf-8", newline="\n"
+            )
+            command_launcher.chmod(0o755)
+            added_command += 1
+
     if not args.quiet:
         print(f"Updated application launchers: {migrated}")
+        print(f"Added macOS/Linux launchers:  {added_command}")
     return 0
 
 
