@@ -19,7 +19,8 @@ try:
 except ImportError as exc:
     raise SystemExit(
         "Missing renderer dependencies. Run:\n"
-        '  python -m pip install -r system\\requirements.txt'
+        "  Windows:      python -m pip install -r system\\requirements.txt\n"
+        "  macOS/Linux:  python3 -m pip install -r system/requirements.txt"
     ) from exc
 
 
@@ -64,6 +65,17 @@ def write_yaml(path: Path, data: dict[str, Any]) -> None:
         yaml.dump(data, stream)
 
 
+def write_text(path: Path, text: str, newline: str) -> None:
+    """Write text with fixed line endings.
+
+    Path.write_text only accepts a ``newline`` argument on Python 3.10+, so use
+    ``Path.open`` (which has always supported it) to stay compatible with the
+    Python 3.9 that ships with macOS.
+    """
+    with path.open("w", encoding="utf-8", newline=newline) as stream:
+        stream.write(text)
+
+
 def richtext(value: Any) -> Markup:
     escaped = html.escape(str(value), quote=False)
     formatted = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
@@ -95,9 +107,9 @@ def render_html(
 
     stylesheet = stylesheet_path.read_text(encoding="utf-8")
     output_html.parent.mkdir(parents=True, exist_ok=True)
-    output_html.write_text(
+    write_text(
+        output_html,
         template.render(**data, stylesheet=stylesheet),
-        encoding="utf-8",
         newline="\n",
     )
 
@@ -247,13 +259,9 @@ RENDER_COMMAND_CONTENT = (
 
 def write_render_launchers(application_folder: Path) -> None:
     """Write the Windows (.cmd) and macOS/Linux (.command) render launchers."""
-    (application_folder / "Render.cmd").write_text(
-        RENDER_CMD_CONTENT, encoding="utf-8", newline="\r\n"
-    )
+    write_text(application_folder / "Render.cmd", RENDER_CMD_CONTENT, newline="\r\n")
     command_launcher = application_folder / "Render.command"
-    command_launcher.write_text(
-        RENDER_COMMAND_CONTENT, encoding="utf-8", newline="\n"
-    )
+    write_text(command_launcher, RENDER_COMMAND_CONTENT, newline="\n")
     command_launcher.chmod(0o755)
 
 
@@ -318,14 +326,12 @@ def migrate_application_launchers(args: argparse.Namespace) -> int:
         text = launcher.read_text(encoding="utf-8")
         updated = text.replace(old_path, new_path)
         if updated != text:
-            launcher.write_text(updated, encoding="utf-8", newline="\r\n")
+            write_text(launcher, updated, newline="\r\n")
             migrated += 1
 
         command_launcher = launcher.with_name("Render.command")
         if not command_launcher.exists():
-            command_launcher.write_text(
-                RENDER_COMMAND_CONTENT, encoding="utf-8", newline="\n"
-            )
+            write_text(command_launcher, RENDER_COMMAND_CONTENT, newline="\n")
             command_launcher.chmod(0o755)
             added_command += 1
 
