@@ -49,15 +49,15 @@ resume:
       details: ''
   skills:
     - category: Programming & Data Analysis
-      details: Python, Java, C/C++, NumPy, Pandas, scikit-learn, PyTorch, SPSS
+      details: Python, Java, C/C++, NumPy, Pandas, Scikit-learn, PyTorch, SPSS
     - category: Mobile & Software
       details: MATLAB, Simulink, TwinCAT, Android Studio, Unity, Git
     - category: Wearable & Embedded Systems
       details: IMU sensors, Arduino IDE, SparkFun modules, vibrotactile motors, PCB modules
     - category: Biomechanics & Signal Processing
-      details: Gait analysis, human activity recognition, sensor fusion, feature extraction, OpenSim
+      details: Gait analysis, Human activity recognition, Sensor fusion, Feature extraction, OpenSim
     - category: Robotics
-      details: Surgical robotics, parallel manipulators, inverse kinematics, dynamics, control systems
+      details: Surgical robotics, Parallel manipulators, Inverse kinematics, Dynamics, Control systems
     - category: CAD
       details: SolidWorks
   experience:

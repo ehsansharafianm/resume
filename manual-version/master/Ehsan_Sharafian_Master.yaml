@@ -52,15 +52,15 @@ resume:
 
   skills:
     - category: Programming & Data Analysis
-      details: Python, Java, C/C++, NumPy, scikit-learn, PyTorch, SPSS
+      details: Python, Java, C/C++, NumPy, Scikit-learn, PyTorch, SPSS
     - category: Mobile & Software
       details: MATLAB, Simulink, TwinCAT, Android Studio, Unity, Git
     - category: Wearable & Embedded Systems
       details: IMU sensors, Arduino IDE, SparkFun modules, PCB modules
     - category: Biomechanics & Signal Processing
-      details: Gait analysis, human activity recognition, feature extraction, OpenSim
+      details: Gait analysis, Human activity recognition, Feature extraction, OpenSim
     - category: Robotics
-      details: Surgical robotics, parallel manipulators, inverse kinematics, dynamics, control systems
+      details: Surgical robotics, Parallel manipulators, Inverse kinematics, Dynamics, Control systems
     - category: CAD
       details: SolidWorks
 
@@ -70,12 +70,12 @@ resume:
       location: Orono, ME
       date: Sep 2023 - Present
       highlights:
-        - Development of real-time wearable sensing systems and Android-based applications for gait analysis, activity recognition, and home-based rehabilitation.
+        - Developed real-time wearable sensing systems and Android-based applications for gait analysis, activity recognition, and home-based rehabilitation.
         - Designed a smartphone-deployed system using a foot-mounted IMU to reconstruct foot trajectories and classify level walking, stairs, and ramps, achieving **96% accuracy**, **<1.1 cm error**, and **112 ms latency**.
-        - Development a lightweight human activity recognition system using two IMUs, and classifier, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation pattern in older adults.
+        - Developed a lightweight human activity recognition system using two IMUs, and classifier, achieving **99% accuracy** for normal locomotion and **93% accuracy** for atypical stair-negotiation pattern in older adults.
         - Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, SparkFun modules, and PCB circuitry for adults aged 65+.
         - Demonstrated up to **30% improvement** in walking speed using the haptic feedback  system, with minimal cognitive demand.
-        - Human-subject validation studies with **85+ participants** across gait analysis.
+        - Conducted human-subject validation studies with **85+ participants** across gait analysis.
         - Implemented real-time algorithms in Java, Python, and MATLAB for signal processing, sensor fusion, biomechanical modeling, and machine learning in mobile health applications.
     - position: Mechanical and Control Systems Engineer
       organization: Sina Robotics and Medical Innovators Co.
@@ -99,11 +99,11 @@ resume:
       date: Mar 2025
 
   leadership:
-    - position: Graduate Senator
+    - position: Graduate Student Senator
       organization: Department of Mechanical Engineering, University of Maine
       date: Sep 2025 - Present
       highlights:
-        - Represent graduate student concerns in senate meetings and support academic programs.
+        - Represented graduate student concerns in senate meetings and support academic programs.
     - position: President
       organization: Persian Graduate Student Association, University of Maine
       date: Sep 2024 - Apr 2026
