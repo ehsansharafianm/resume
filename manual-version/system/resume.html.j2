@@ -87,6 +87,26 @@
       {% endfor %}
     </section>
 
+    {% if resume.teaching is defined %}
+    <section>
+      <h2>Teaching &amp; Mentoring</h2>
+      {% for item in resume.teaching %}
+        <article class="experience-entry">
+          <div class="entry-heading">
+            <div><strong>{{ item.position }}</strong><span class="separator"> | </span><span class="organization">{{ item.organization }}</span></div>
+            <div class="date">{{ item.date }}</div>
+          </div>
+          {% if item.location %}<div class="location">{{ item.location }}</div>{% endif %}
+          <ul>
+            {% for highlight in item.highlights %}
+              <li>{{ highlight | richtext }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
     <section>
       <h2>Selected Honors</h2>
       {% for item in resume.honors %}

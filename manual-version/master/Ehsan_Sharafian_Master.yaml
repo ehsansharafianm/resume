@@ -85,13 +85,27 @@ resume:
         - Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT, with Simulink validation of inverse kinematics.
         - Built a Python graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.
         - Coordinated hands-on validation sessions with **6 experienced surgeons**, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.
-    - position: Laboratory Research Assistant
-      organization: New Technology Research Center, Amirkabir University of Technology
-      location:
+  teaching:
+    - position: Teaching Assistant
+      organization: University of Maine
+      location: Orono, ME
+      date: Sep 2023 - Dec 2023
+      highlights:
+        - Served as teaching assistant for Manufacturing Design, supporting undergraduate instruction, grading, student questions, and applied engineering problem-solving.
+    - position: Teaching Assistant
+      organization: Amirkabir University of Technology
+      location: Tehran, Iran
       date: Nov 2020 - Nov 2022
       highlights:
+        - Served as teaching assistant for Dynamics II and Dynamics of Machines, guiding students through engineering mechanics, machine dynamics, assignments, and problem-solving sessions.
+        - Mentored 6 undergraduate students across 5 research teams, supporting equipment use, troubleshooting, documentation, and project execution.
         - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
-        - Mentored 6 undergraduate students across 5 research teams, guiding equipment use, troubleshooting, documentation, and project execution.
+    - position: Mathematics Lecturer
+      organization: Allame High School
+      location: Tehran, Iran
+      date: 2013 - 2017
+      highlights:
+        - Taught high-school mathematics and university entrance exam preparation, strengthening student problem-solving and analytical skills.
   honors:
     - name: Flagship Fellowship Award, University of Maine
       date: Sep 2024 - Sep 2025
