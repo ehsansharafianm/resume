@@ -163,40 +163,66 @@ def render_pdf(
     if temporary_pdf.exists():
         temporary_pdf.unlink()
 
-    with tempfile.TemporaryDirectory(prefix="resume-browser-") as profile:
-        command = [
-            str(browser),
-            "--headless=new",
-            "--disable-gpu",
-            "--disable-extensions",
-            "--hide-scrollbars",
-            "--no-pdf-header-footer",
-            "--run-all-compositor-stages-before-draw",
-            f"--user-data-dir={profile}",
-            f"--print-to-pdf={temporary_pdf.resolve()}",
-            input_html.resolve().as_uri(),
-        ]
-        result = subprocess.run(
-            command,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            timeout=60,
-            check=False,
-        )
+    source_uri = input_html.resolve().as_uri()
+    attempts: list[str] = []
 
-    if result.returncode != 0:
-        temporary_pdf.unlink(missing_ok=True)
-        details = (result.stderr or result.stdout).strip()
-        raise ResumeError(
-            f"Browser PDF rendering failed with exit code {result.returncode}.\n{details}"
-        )
-    if not temporary_pdf.is_file() or temporary_pdf.stat().st_size < 1000:
-        temporary_pdf.unlink(missing_ok=True)
-        raise ResumeError(f"Browser did not create a valid PDF: {output_pdf}")
+    # Some Chrome/Edge builds hang indefinitely when printing to PDF with
+    # "--headless=new" (notably on macOS). Try it first, then fall back to the
+    # classic "--headless" mode if it stalls or fails.
+    for headless_flag in ("--headless=new", "--headless"):
+        with tempfile.TemporaryDirectory(prefix="resume-browser-") as profile:
+            command = [
+                str(browser),
+                headless_flag,
+                "--disable-gpu",
+                "--no-first-run",
+                "--no-default-browser-check",
+                "--disable-extensions",
+                "--disable-background-networking",
+                "--hide-scrollbars",
+                "--no-pdf-header-footer",
+                "--virtual-time-budget=10000",
+                f"--user-data-dir={profile}",
+                f"--print-to-pdf={temporary_pdf.resolve()}",
+                source_uri,
+            ]
+            try:
+                result = subprocess.run(
+                    command,
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                    timeout=90,
+                    check=False,
+                )
+            except subprocess.TimeoutExpired:
+                attempts.append(f"{headless_flag}: timed out after 90 seconds")
+                temporary_pdf.unlink(missing_ok=True)
+                continue
 
-    temporary_pdf.replace(output_pdf)
+        if result.returncode != 0:
+            details = (result.stderr or result.stdout).strip()
+            attempts.append(
+                f"{headless_flag}: exit code {result.returncode}. {details}".strip()
+            )
+            temporary_pdf.unlink(missing_ok=True)
+            continue
+
+        if not temporary_pdf.is_file() or temporary_pdf.stat().st_size < 1000:
+            attempts.append(f"{headless_flag}: did not produce a valid PDF")
+            temporary_pdf.unlink(missing_ok=True)
+            continue
+
+        temporary_pdf.replace(output_pdf)
+        return
+
+    raise ResumeError(
+        "Browser PDF rendering failed:\n  "
+        + "\n  ".join(attempts)
+        + "\nThe HTML preview was still generated; you can open it in a browser "
+        "and use Print > Save as PDF instead."
+    )
 
 
 def render_resume(
