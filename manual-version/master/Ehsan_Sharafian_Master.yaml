@@ -91,21 +91,21 @@ resume:
       location: Orono, ME
       date: Sep 2023 - Dec 2023
       highlights:
-        - Served as teaching assistant for Manufacturing Design, supporting undergraduate instruction, grading, student questions, and applied engineering problem-solving.
+        - Served as teaching assistant for Manufacturing Design, supporting undergraduate instruction, grading, and SolidWorks-based design assignments.
     - position: Teaching Assistant
       organization: Amirkabir University of Technology
-      location: Tehran, Iran
+      location:
       date: Nov 2020 - Nov 2022
       highlights:
-        - Served as teaching assistant for Dynamics II and Dynamics of Machines, guiding students through engineering mechanics, machine dynamics, assignments, and problem-solving sessions.
+        - Served as teaching assistant for **5 semesters** in Dynamics II and Dynamics of Machines, guiding students through engineering mechanics, assignments, and problem-solving sessions.
         - Mentored 6 undergraduate students across 5 research teams, supporting equipment use, troubleshooting, documentation, and project execution.
         - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
     - position: Mathematics Lecturer
       organization: Allame High School
-      location: Tehran, Iran
+      location:
       date: 2013 - 2017
       highlights:
-        - Taught high-school mathematics and university entrance exam preparation, strengthening student problem-solving and analytical skills.
+        - Taught high-school mathematics to **40+ students** across more than 5 classes, strengthening students' analytical reasoning and problem-solving skills.
   honors:
     - name: Flagship Fellowship Award, University of Maine
       date: Sep 2024 - Sep 2025
@@ -115,14 +115,17 @@ resume:
   leadership:
     - position: Graduate Student Senator
       organization: Department of Mechanical Engineering, University of Maine
+      location: Orono, ME
       date: Sep 2025 - Present
       highlights:
-        - Represented graduate student concerns in senate meetings and support academic programs.
+        - Advocate for graduate student concerns in senate meetings, strengthening communication between students, faculty, and university leadership.
     - position: President
       organization: Persian Graduate Student Association, University of Maine
+      location: Orono, ME
       date: Sep 2024 - Apr 2026
       highlights:
-        - Organized Persian cultural and community events, including Nowruz celebrations with **150+ attendees** to introduce Persian traditions and strengthen students engagement.
+        - Organized Persian cultural and community events, including Nowruz celebrations with **100+ attendees**, to introduce Persian traditions and strengthen graduate-student engagement.
+        - Coordinated event planning, team collaboration, logistics, and time-sensitive preparation for cultural and community programs.
 
   publications:
     summary: "**6 peer-reviewed (5 first-author) journal articles** in wearable sensing, biomechanics, rehabilitation engineering, and robotics."
