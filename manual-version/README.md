@@ -37,11 +37,21 @@ Every launcher ships in two forms that do exactly the same thing:
 - `*.command` — double-click in **Finder** on **macOS** (also runnable from a
   terminal on macOS or Linux).
 
-Both call the same `system/resume_tool.py`, so the HTML and PDF come out
-identical regardless of which computer you use. Each new application folder
-gets both a `Render.cmd` and a `Render.command`. The Python tool already knows
-where to find Microsoft Edge, Google Chrome, or Chromium on Windows and macOS
-for PDF generation.
+Both call the same `system/resume_tool.py`. Each new application folder gets
+both a `Render.cmd` and a `Render.command`.
+
+The two platforms differ only in the final PDF step:
+
+- **Windows (`*.cmd`)** builds the HTML **and** writes the PDF automatically,
+  using Microsoft Edge, Google Chrome, or Chromium in the background.
+- **macOS/Linux (`*.command`)** builds the HTML and **opens it in your
+  browser**; you then press **Print (Cmd+P) > Save as PDF**. This avoids the
+  background (headless) browser step, which hangs on some managed Macs, and
+  produces an identical PDF because it prints the same page.
+
+So the macOS workflow is: run the launcher → the resume opens in your browser →
+`Cmd+P` → set **Destination: Save as PDF**, untick **Headers and footers** →
+**Save**. The generated `index.html` always reflects your latest YAML edits.
 
 On macOS the first time you double-click a `.command` file, Gatekeeper may ask
 for confirmation; choose **Open**. If a `.command` file ever loses its

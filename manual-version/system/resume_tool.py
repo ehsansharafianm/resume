@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unicodedata
+import webbrowser
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -238,6 +239,19 @@ def render_resume(
         render_pdf(output_html, output_pdf, browser_path)
 
 
+def open_in_browser(html_path: Path) -> None:
+    """Open a rendered HTML file in the user's default browser.
+
+    Used as a reliable alternative to automatic PDF generation: the browser's
+    own Print > Save as PDF always works, even where headless PDF rendering is
+    blocked (e.g. some managed macOS machines).
+    """
+    try:
+        webbrowser.open(html_path.resolve().as_uri())
+    except Exception:  # noqa: BLE001 - opening a browser is best effort
+        pass
+
+
 def slugify(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
     slug = re.sub(r"[^a-z0-9]+", "-", normalized.lower()).strip("-")
@@ -265,7 +279,8 @@ RENDER_COMMAND_CONTENT = (
     "#!/bin/bash\n"
     "# Re-render this application on macOS and Linux.\n"
     "# Double-click in Finder (macOS) or run from a terminal.\n"
-    "# The Windows equivalent is Render.cmd.\n"
+    "# Builds the HTML and opens it in your browser; use Print (Cmd+P) >\n"
+    "# Save as PDF. The Windows equivalent (Render.cmd) writes the PDF directly.\n"
     'DIR="$(cd "$(dirname "$0")" && pwd)"\n'
     "if command -v python3 >/dev/null 2>&1; then\n"
     "  PY=python3\n"
@@ -279,7 +294,7 @@ RENDER_COMMAND_CONTENT = (
     '"$PY" "$DIR/../../../system/resume_tool.py" render '
     '-Input "$DIR/resume.yaml" '
     '-OutputHtml "$DIR/index.html" '
-    '-OutputPdf "$DIR/resume.pdf" "$@"\n'
+    '-SkipPdf -Open "$@"\n'
 )
 
 
@@ -346,7 +361,7 @@ def migrate_application_launchers(args: argparse.Namespace) -> int:
     old_path = "..\\..\\..\\resume_tool.py"
     new_path = "..\\..\\..\\system\\resume_tool.py"
     migrated = 0
-    added_command = 0
+    refreshed_command = 0
 
     for launcher in applications_root.glob("*/*/Render.cmd"):
         text = launcher.read_text(encoding="utf-8")
@@ -355,15 +370,18 @@ def migrate_application_launchers(args: argparse.Namespace) -> int:
             write_text(launcher, updated, newline="\r\n")
             migrated += 1
 
+        # Always refresh the macOS/Linux launcher so behavior changes (e.g. the
+        # build-HTML-and-open flow) reach existing application folders too.
         command_launcher = launcher.with_name("Render.command")
-        if not command_launcher.exists():
+        current = command_launcher.read_text(encoding="utf-8") if command_launcher.exists() else None
+        if current != RENDER_COMMAND_CONTENT:
             write_text(command_launcher, RENDER_COMMAND_CONTENT, newline="\n")
-            command_launcher.chmod(0o755)
-            added_command += 1
+            refreshed_command += 1
+        command_launcher.chmod(0o755)
 
     if not args.quiet:
         print(f"Updated application launchers: {migrated}")
-        print(f"Added macOS/Linux launchers:  {added_command}")
+        print(f"Refreshed macOS/Linux launchers: {refreshed_command}")
     return 0
 
 
@@ -452,15 +470,19 @@ def wizard_command(args: argparse.Namespace) -> int:
 
 def render_command(args: argparse.Namespace) -> None:
     output_pdf = None if args.skip_pdf else Path(args.output_pdf).resolve()
+    output_html = Path(args.output_html).resolve()
     render_resume(
         Path(args.input).resolve(),
-        Path(args.output_html).resolve(),
+        output_html,
         output_pdf,
         browser_path=args.browser,
     )
-    print(f"Generated HTML: {Path(args.output_html).resolve()}")
+    print(f"Generated HTML: {output_html}")
     if output_pdf:
         print(f"Generated PDF:  {output_pdf}")
+    if getattr(args, "open_html", False):
+        print("Opening in your browser - use Print (Cmd+P) > Save as PDF.")
+        open_in_browser(output_html)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -516,6 +538,13 @@ def build_parser() -> argparse.ArgumentParser:
     render.add_argument("-OutputPdf", "--output-pdf", default="resume.pdf")
     render.add_argument("-Browser", "--browser", default=None)
     render.add_argument("-SkipPdf", "--skip-pdf", action="store_true")
+    render.add_argument(
+        "-Open",
+        "--open",
+        dest="open_html",
+        action="store_true",
+        help="Open the rendered HTML in the default browser after rendering.",
+    )
     render.set_defaults(handler=render_command)
 
     return parser
