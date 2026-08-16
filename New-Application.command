@@ -1,7 +1,7 @@
-#!/bin/bash
-# Interactive job-application wizard for macOS and Linux.
+#!/usr/bin/env bash
+# Interactive job-application wizard for macOS.
 # Double-click in Finder (macOS) or run from a terminal.
-# The Windows equivalent is New-Application.cmd.
+# This is the macOS equivalent of New-Application.cmd.
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -20,9 +20,9 @@ fi
 
 if [ "$#" -eq 0 ]; then
   clear
-  "$PY" "$DIR/system/resume_tool.py" wizard
+  "$PY" "$DIR/system/resume_tool.py" wizard --pdf-fallback-open
 else
-  "$PY" "$DIR/system/resume_tool.py" create "$@"
+  "$PY" "$DIR/system/resume_tool.py" create --pdf-fallback-open "$@"
 fi
 
 exit $?

@@ -276,11 +276,10 @@ RENDER_CMD_CONTENT = (
 )
 
 RENDER_COMMAND_CONTENT = (
-    "#!/bin/bash\n"
-    "# Re-render this application on macOS and Linux.\n"
+    "#!/usr/bin/env bash\n"
+    "# Re-render this application on macOS.\n"
     "# Double-click in Finder (macOS) or run from a terminal.\n"
-    "# Builds the HTML and opens it in your browser; use Print (Cmd+P) >\n"
-    "# Save as PDF. The Windows equivalent (Render.cmd) writes the PDF directly.\n"
+    "# This is the macOS equivalent of Render.cmd.\n"
     'DIR="$(cd "$(dirname "$0")" && pwd)"\n'
     "if command -v python3 >/dev/null 2>&1; then\n"
     "  PY=python3\n"
@@ -291,10 +290,20 @@ RENDER_COMMAND_CONTENT = (
     'https://www.python.org/downloads/ and try again."\n'
     "  exit 1\n"
     "fi\n"
+    'if "$PY" "$DIR/../../../system/resume_tool.py" render '
+    '-Input "$DIR/resume.yaml" '
+    '-OutputHtml "$DIR/index.html" '
+    '-OutputPdf "$DIR/resume.pdf" "$@"; then\n'
+    "  exit 0\n"
+    "fi\n"
+    "\n"
+    'echo "Automatic PDF generation failed; opening the HTML print preview instead."\n'
     '"$PY" "$DIR/../../../system/resume_tool.py" render '
     '-Input "$DIR/resume.yaml" '
     '-OutputHtml "$DIR/index.html" '
     '-SkipPdf -Open "$@"\n'
+    "\n"
+    "exit $?\n"
 )
 
 
@@ -337,13 +346,26 @@ def create_application(args: argparse.Namespace) -> None:
 
     write_render_launchers(application_folder)
 
+    output_html = application_folder / "index.html"
     output_pdf = None if args.skip_pdf else application_folder / "resume.pdf"
-    render_resume(
-        application_yaml,
-        application_folder / "index.html",
-        output_pdf,
-        browser_path=args.browser,
-    )
+    try:
+        render_resume(
+            application_yaml,
+            output_html,
+            output_pdf,
+            browser_path=args.browser,
+        )
+    except ResumeError as exc:
+        if (
+            not args.pdf_fallback_open
+            or output_pdf is None
+            or not output_html.is_file()
+        ):
+            raise
+        print(f"Warning: {exc}", file=sys.stderr)
+        print("Opening the generated HTML print preview instead.")
+        open_in_browser(output_html)
+        output_pdf = None
 
     print("Application created successfully:")
     print(f"  {application_folder}")
@@ -353,7 +375,7 @@ def create_application(args: argparse.Namespace) -> None:
     print("  index.html   - self-contained browser preview")
     if output_pdf:
         print("  resume.pdf   - submission-ready PDF")
-    print("  Render.cmd   - re-render after editing YAML")
+    print("  Render.cmd / Render.command - re-render after editing YAML")
 
 
 def migrate_application_launchers(args: argparse.Namespace) -> int:
@@ -449,6 +471,7 @@ def wizard_command(args: argparse.Namespace) -> int:
         destination_root=str(PROJECT_ROOT / "applications"),
         browser=args.browser,
         skip_pdf=skip_pdf,
+        pdf_fallback_open=args.pdf_fallback_open,
     )
 
     print("")
@@ -462,7 +485,7 @@ def wizard_command(args: argparse.Namespace) -> int:
 
     print("")
     print("Finished. Edit resume.yaml in the new application folder,")
-    print("then run its Render.cmd whenever you want to rebuild it.")
+    print("then run its Render.cmd (Windows) or Render.command (macOS) to rebuild it.")
     print("")
     input("Press Enter to close this window...")
     return 0
@@ -516,12 +539,14 @@ def build_parser() -> argparse.ArgumentParser:
     )
     create.add_argument("-Browser", "--browser", default=None)
     create.add_argument("-SkipPdf", "--skip-pdf", action="store_true")
+    create.add_argument("--pdf-fallback-open", action="store_true", help=argparse.SUPPRESS)
     create.set_defaults(handler=create_application)
 
     wizard = subparsers.add_parser(
         "wizard", help="Open an interactive job-application wizard."
     )
     wizard.add_argument("-Browser", "--browser", default=None)
+    wizard.add_argument("--pdf-fallback-open", action="store_true", help=argparse.SUPPRESS)
     wizard.set_defaults(handler=wizard_command)
 
     migrate = subparsers.add_parser(
