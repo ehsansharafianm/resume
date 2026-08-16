@@ -40,23 +40,16 @@ Every launcher ships in two forms that do exactly the same thing:
 Both call the same `system/resume_tool.py`. Each new application folder gets
 both a `Render.cmd` and a `Render.command`.
 
-The two platforms differ only in the final PDF step:
-
-- **Windows (`*.cmd`)** builds the HTML **and** writes the PDF automatically,
-  using Microsoft Edge, Google Chrome, or Chromium in the background.
-- **macOS/Linux (`*.command`)** builds the HTML and **opens it in your
-  browser**; you then press **Print (Cmd+P) > Save as PDF**. This avoids the
-  background (headless) browser step, which hangs on some managed Macs, and
-  produces an identical PDF because it prints the same page.
-
-So the macOS workflow is: run the launcher → the resume opens in your browser →
-`Cmd+P` → set **Destination: Save as PDF**, untick **Headers and footers** →
-**Save**. The generated `index.html` always reflects your latest YAML edits.
+Both launchers build the HTML and write the PDF automatically using Microsoft
+Edge, Google Chrome, or Chromium in the background. The macOS `.command` files
+are direct equivalents of their Windows `.cmd` counterparts. If a browser
+blocks background PDF printing on macOS, the launcher opens the generated HTML
+as a fallback; use **Print (Cmd+P) > Save as PDF**.
 
 On macOS the first time you double-click a `.command` file, Gatekeeper may ask
-for confirmation; choose **Open**. If a `.command` file ever loses its
-executable flag (for example after copying it around), restore it with
-`chmod +x <file>.command` from a terminal.
+for confirmation; choose **Open**. The repository stores these launchers with
+their executable flag. If a launcher loses that flag after being copied outside
+Git, restore it with `chmod +x <file>.command` from a terminal.
 
 The editable content, HTML structure, and CSS design remain separate at the
 source level. During rendering, CSS is embedded into `index.html`, so generated

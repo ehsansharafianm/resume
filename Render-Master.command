@@ -1,8 +1,7 @@
-#!/bin/bash
-# Rebuild the master resume on macOS and Linux.
+#!/usr/bin/env bash
+# Rebuild the master resume on macOS.
 # Double-click in Finder (macOS) or run from a terminal.
-# Builds the HTML and opens it in your browser; use Print (Cmd+P) > Save as PDF.
-# The Windows equivalent (Render-Master.cmd) writes the PDF directly.
+# This is the macOS equivalent of Render-Master.cmd.
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -18,6 +17,14 @@ else
 fi
 
 "$PY" "$DIR/system/resume_tool.py" migrate --quiet
+if "$PY" "$DIR/system/resume_tool.py" render \
+  -Input "$DIR/master/Ehsan_Sharafian_Master.yaml" \
+  -OutputHtml "$DIR/system/index.html" \
+  -OutputPdf "$DIR/Ehsan-Sharafian-Resume.pdf" "$@"; then
+  exit 0
+fi
+
+echo "Automatic PDF generation failed; opening the HTML print preview instead."
 "$PY" "$DIR/system/resume_tool.py" render \
   -Input "$DIR/master/Ehsan_Sharafian_Master.yaml" \
   -OutputHtml "$DIR/system/index.html" \
