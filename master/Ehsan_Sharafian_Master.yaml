@@ -56,7 +56,7 @@ resume:
     - category: Mobile & Software
       details: MATLAB, Simulink, TwinCAT, Android Studio, Unity, Git
     - category: Wearable & Embedded Systems
-      details: IMU sensors, Arduino IDE, SparkFun modules, PCB modules
+      details: IMU sensors, Arduino IDE, SparkFun modules, Sensor fusion, PCB modules
     - category: Biomechanics & Signal Processing
       details: Gait analysis, Human activity recognition, Feature extraction, OpenSim
     - category: Robotics
@@ -91,21 +91,22 @@ resume:
       location: Orono, ME
       date: Sep 2023 - Dec 2023
       highlights:
-        - Served as teaching assistant for Manufacturing Design course, supporting undergraduate instruction, grading, and SolidWorks-based design assignments.
+        - Served as teaching assistant for Manufacturing Design course, instruction, grading, and SolidWorks design projects.
     - position: Teaching Assistant
       organization: Amirkabir University of Technology
       location:
       date: Nov 2020 - Nov 2022
       highlights:
-        - Served as teaching assistant for **5 semesters** in Dynamics II and Dynamics of Machines, guiding students through engineering mechanics, assignments, and problem-solving sessions.
-        - Mentored 6 undergraduate students across 5 research teams, supporting equipment use, troubleshooting, documentation, and project execution.
-        - Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.
+        - Served as teaching assistant for **5 semesters** in Dynamics II and Dynamics of Machines.
+        - Mentored 6 undergraduate students across 5 research teams, supporting equipment use, and project execution.
+        - Designed and assembled robotics/mechatronics setups integrating hardware, CAD, and MATLAB for student projects.
+
     - position: Mathematics Lecturer
-      organization: Allame High School
+      organization: Allame Tabatabayi High School
       location:
       date: 2013 - 2017
       highlights:
-        - Taught high-school mathematics to **40+ students** across more than 5 classes, strengthening students' analytical reasoning and problem-solving skills.
+        - Taught high-school mathematics to **40+ students** across 5+ classes, focusing on analytical reasoning and problem-solving.
   honors:
     - name: Flagship Fellowship Award, University of Maine
       date: Sep 2024 - Sep 2025

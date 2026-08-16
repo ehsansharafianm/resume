@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Ehsan's YAML resume renderer">
-<meta name="application-company" content="A1"><meta name="application-role" content="A2">  <title>Ehsan Sharafian M. - Resume - A2</title>
+<meta name="application-company" content="A"><meta name="application-role" content="B">  <title>Ehsan Sharafian - Resume - B</title>
   <style>
 :root {
   --ink: #1f2933;
@@ -234,14 +234,32 @@ a:hover {
 
 @media print {
   :root {
+    --ink: #0b0f14;
+    --muted: #27313a;
+    --accent: #004f73;
     --canvas: #ffffff;
   }
 
   html,
   body {
     background: #ffffff;
+    color: var(--ink);
     margin: 0;
     padding: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  h1 {
+    color: #000000;
+  }
+
+  .contact-item {
+    color: #1f2933;
+  }
+
+  .separator {
+    color: #374151;
   }
 
   .resume {
@@ -256,13 +274,26 @@ a:hover {
   }
 }
 
+.leadership-entry {
+  break-inside: avoid;
+  margin-bottom: 6px;
+}
+
+.leadership-entry:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-entry ul {
+  margin-top: 2px;
+}
+
   </style>
 </head>
 <body>
 
   <main class="resume">
     <header class="resume-header">
-      <h1>Ehsan Sharafian M.</h1>
+      <h1>Ehsan Sharafian</h1>
       <div class="contact-grid">
           <a class="contact-item" href="mailto:ehsan.sharafian@maine.edu" target="_blank" rel="noopener noreferrer">
             <span class="contact-icon">      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7 10-7"></path></svg>
@@ -299,7 +330,9 @@ a:hover {
 
     <section>
       <h2>Professional Summary</h2>
-      <p class="summary">Mechanical Engineering PhD candidate specializing in intelligent wearable systems for human movement analysis and digital health. Experienced in building end-to-end solutions that integrate IMU-based sensing, embedded hardware, smartphone applications, machine learning, and haptic feedback for gait analysis and rehabilitation. Skilled in Python, MATLAB, Android Studio/Java, and PyTorch, with six peer-reviewed journal publications.</p>
+      <p class="summary">Mechanical Engineering PhD candidate seeking an internship in  wearable technology.
+ Experienced in developing integrated wearable systems for gait analysis and rehabilitation using IMU sensing, embedded hardware, smartphone applications, 
+ machine learning, and haptic feedback. Proficient in Python, MATLAB, Java, and PyTorch, with six peer-reviewed journal publications.</p>
     </section>
 
     <section>
@@ -328,7 +361,7 @@ a:hover {
       <h2>Technical Skills</h2>
         <div class="skill-row">
           <strong>Programming & Data Analysis</strong>
-          <span>Python, Java, C/C++, NumPy, Pandas, scikit-learn, PyTorch, SPSS</span>
+          <span>Python, Java, C/C++, NumPy, Scikit-learn, PyTorch, SPSS</span>
         </div>
         <div class="skill-row">
           <strong>Mobile & Software</strong>
@@ -336,15 +369,15 @@ a:hover {
         </div>
         <div class="skill-row">
           <strong>Wearable & Embedded Systems</strong>
-          <span>IMU sensors, Arduino IDE, SparkFun modules, vibrotactile motors, PCB modules</span>
+          <span>IMU sensors, Arduino IDE, SparkFun modules, PCB modules</span>
         </div>
         <div class="skill-row">
           <strong>Biomechanics & Signal Processing</strong>
-          <span>Gait analysis, human activity recognition, sensor fusion, feature extraction, OpenSim</span>
+          <span>Gait analysis, Human activity recognition, Feature extraction, OpenSim</span>
         </div>
         <div class="skill-row">
           <strong>Robotics</strong>
-          <span>Surgical robotics, parallel manipulators, inverse kinematics, dynamics, control systems</span>
+          <span>Surgical robotics, Parallel manipulators, Inverse kinematics, Dynamics, Control systems</span>
         </div>
         <div class="skill-row">
           <strong>CAD</strong>
@@ -360,13 +393,13 @@ a:hover {
             <div class="date">Sep 2023 - Present</div>
           </div>
 <div class="location">Orono, ME</div>          <ul>
-              <li>Development of real-time wearable sensing systems and Android-based mobile applications for gait analysis, activity recognition, fall-risk assessment, and home-based rehabilitation.</li>
-              <li>Built a smartphone-deployed gait assessment system using a single foot-mounted IMU to reconstruct foot-height trajectories and classify terrains across level walking, stairs, and ramps, achieving <strong>96% accuracy</strong>, <strong>&lt;1.1 cm error</strong>, and <strong>112 ms latency</strong>.</li>
-              <li>Engineered a lightweight human activity recognition system using two IMUs, biomechanical feature extraction, and classifiers including SVM and NB, achieving <strong>99% accuracy</strong> for normal locomotion and <strong>93% accuracy</strong> for atypical stair-negotiation strategies in older adults.</li>
-              <li>Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, Arduino/SparkFun modules, and PCB circuitry for adults aged 65+.</li>
-              <li>Demonstrated up to <strong>30% improvement</strong> in stride length and walking speed during a single-session haptic feedback study, with minimal cognitive demand.</li>
-              <li>Led IRB-approved human-subject validation studies with <strong>85+ participants</strong> across gait analysis, activity recognition, and haptic feedback protocols.</li>
-              <li>Developed real-time algorithms and data pipelines in Android Studio/Java, Python, and MATLAB, combining signal processing, sensor fusion, biomechanical modeling, and machine learning for mobile health applications.</li>
+              <li>Developed real-time wearable sensing systems and Android-based applications for gait analysis, activity recognition, and home-based rehabilitation.</li>
+              <li>Designed a smartphone-deployed system using a foot-mounted IMU to reconstruct foot trajectories and classify level walking, stairs, and ramps, achieving <strong>96% accuracy</strong>, <strong>&lt;1.1 cm error</strong>, and <strong>112 ms latency</strong>.</li>
+              <li>Developed a lightweight human activity recognition system using two IMUs, and classifier, achieving <strong>99% accuracy</strong> for normal locomotion and <strong>93% accuracy</strong> for atypical stair-negotiation pattern in older adults.</li>
+              <li>Architected a home-based haptic feedback gait-training system integrating IMUs, vibrotactile motors, custom Android applications, SparkFun modules, and PCB circuitry for adults aged 65+.</li>
+              <li>Demonstrated up to <strong>30% improvement</strong> in walking speed using the haptic feedback  system, with minimal cognitive demand.</li>
+              <li>Conducted human-subject validation studies with <strong>85+ participants</strong> across gait analysis.</li>
+              <li>Implemented real-time algorithms in Java, Python, and MATLAB for signal processing, sensor fusion, biomechanical modeling, and machine learning in mobile health applications.</li>
           </ul>
         </article>
         <article class="experience-entry">
@@ -374,21 +407,43 @@ a:hover {
             <div><strong>Mechanical and Control Systems Engineer</strong><span class="separator"> | </span><span class="organization">Sina Robotics and Medical Innovators Co.</span></div>
             <div class="date">Dec 2022 - Sep 2023</div>
           </div>
-<div class="location">Tehran, Iran</div>          <ul>
-              <li>Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT and IEC 61131-3 Structured Text, with MATLAB/Simulink validation of inverse kinematics and initialization workflows.</li>
-              <li>Built a Python/Kivy graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.</li>
+          <ul>
+              <li>Developed PLC-based control logic for a telesurgical laparoscopic robotic platform using Beckhoff TwinCAT, with Simulink validation of inverse kinematics.</li>
+              <li>Built a Python graphical user interface on Raspberry Pi for surgeon-facing robot control, system guidance, warnings, and improved human-robot interaction during testing and demonstrations.</li>
               <li>Coordinated hands-on validation sessions with <strong>6 experienced surgeons</strong>, using training, troubleshooting, and usability feedback to refine surgeon-facing robotic system workflows.</li>
+          </ul>
+        </article>
+    </section>
+
+    <section>
+      <h2>Teaching &amp; Mentoring</h2>
+        <article class="experience-entry">
+          <div class="entry-heading">
+            <div><strong>Teaching Assistant</strong><span class="separator"> | </span><span class="organization">University of Maine</span></div>
+            <div class="date">Sep 2023 - Dec 2023</div>
+          </div>
+<div class="location">Orono, ME</div>          <ul>
+              <li>Served as teaching assistant for Manufacturing Design course, instruction, grading, and SolidWorks design projects.</li>
           </ul>
         </article>
         <article class="experience-entry">
           <div class="entry-heading">
-            <div><strong>Laboratory Research Assistant</strong><span class="separator"> | </span><span class="organization">New Technology Research Center, Amirkabir University of Technology</span></div>
+            <div><strong>Teaching Assistant</strong><span class="separator"> | </span><span class="organization">Amirkabir University of Technology</span></div>
             <div class="date">Nov 2020 - Nov 2022</div>
           </div>
-<div class="location">Tehran, Iran</div>          <ul>
-              <li>Designed and assembled robotics and mechatronics setups for student research projects, integrating hardware, CAD, MATLAB workflows, and technical documentation.</li>
-              <li>Mentored 6 undergraduate students across 5 research teams, guiding equipment use, troubleshooting, documentation, and project execution.</li>
-              <li>Coordinated technical preparation for the 9th International Conference on Robotics and Mechatronics, including lab demonstrations, equipment readiness, and presentation logistics.</li>
+          <ul>
+              <li>Served as teaching assistant for <strong>5 semesters</strong> in Dynamics II and Dynamics of Machines.</li>
+              <li>Mentored 6 undergraduate students across 5 research teams, supporting equipment use, and project execution.</li>
+              <li>Designed and assembled robotics/mechatronics setups integrating hardware, CAD, and MATLAB for student projects.</li>
+          </ul>
+        </article>
+        <article class="experience-entry">
+          <div class="entry-heading">
+            <div><strong>Mathematics Lecturer</strong><span class="separator"> | </span><span class="organization">Allame Tabatabayi High School</span></div>
+            <div class="date">2013 - 2017</div>
+          </div>
+          <ul>
+              <li>Test</li>
           </ul>
         </article>
     </section>
@@ -407,13 +462,31 @@ a:hover {
 
     <section>
       <h2>Leadership &amp; Service</h2>
-        <div class="dated-row">
-          <span><strong>Graduate Senator</strong>, Department of Mechanical Engineering, University of Maine</span>
-          <span class="date">Sep 2025 - Present</span>
+
+        <div class="leadership-entry">
+          <div class="dated-row">
+            <span>
+              <strong>Graduate Student Senator</strong>, Department of Mechanical Engineering, University of Maine
+            </span>
+            <span class="date">Sep 2025 - Present</span>
+          </div>
+
+            <ul>
+                <li>Advocate for graduate student concerns in senate meetings, strengthening communication between students, faculty, and university leadership.</li>
+            </ul>
         </div>
-        <div class="dated-row">
-          <span><strong>President</strong>, Iranian Graduate Student Association, University of Maine</span>
-          <span class="date">Sep 2024 - Apr 2026</span>
+        <div class="leadership-entry">
+          <div class="dated-row">
+            <span>
+              <strong>President</strong>, Persian Graduate Student Association, University of Maine
+            </span>
+            <span class="date">Sep 2024 - Apr 2026</span>
+          </div>
+
+            <ul>
+                <li>Organized Persian cultural events, including Nowruz celebrations with <strong>100+ attendees</strong>, to introduce Persian traditions.</li>
+                <li>Coordinated event planning, team collaboration, logistics, and time-sensitive preparation for cultural and community programs.</li>
+            </ul>
         </div>
     </section>
 
@@ -421,12 +494,12 @@ a:hover {
       <h2>Publications</h2>
       <p class="publication-summary"><strong>6 peer-reviewed (5 first-author) journal articles</strong> in wearable sensing, biomechanics, rehabilitation engineering, and robotics.</p>
       <ul>
-          <li><strong>Sensors</strong> (2026) - Foot-height estimation and locomotion classification using a foot-mounted IMU and smartphone.</li>
-          <li><strong>IEEE Access</strong> (2025) - IMU-based activity recognition for older adults using minimal biomechanical features.</li>
-          <li><strong>IEEE TNSRE</strong> (2025) - Real-time haptic feedback effects on gait performance and cognitive load.</li>
-          <li><strong>Journal of Biomechanics</strong> (2025) - Thigh extension and leg coordination in young and older adult walkers.</li>
-          <li><strong>International Journal of Robotics and Automation</strong> (2023) - Robot-arm trajectory optimization for production-line applications.</li>
-          <li><strong>Robotica</strong> (2022) - Screw theory-based constraint wrench analysis for a Delta manipulator.</li>
+          <li><strong>Ehsan Sharafian</strong>, Babak Hejrati. &ldquo;Real-Time Foot Height Estimation and Activity Classification Using a Foot-Mounted IMU Implemented on a Smartphone.&rdquo; <em>Sensors</em> (2026).</li>
+          <li><strong>Ehsan Sharafian</strong>, Colby Ellis, Babak Hejrati. &ldquo;Real-Time Activity Recognition Using Minimal Biomechanical Features: A Lightweight IMU-Based Classifier for Older Adults.&rdquo; <em>IEEE Access</em> (2025).</li>
+          <li><strong>Ehsan Sharafian</strong>, Colby Ellis, Ben Sidaway, Marie Hayes, Babak Hejrati. &ldquo;The Effects of Real-Time Haptic Feedback on Gait and Cognitive Load in Older Adults.&rdquo; <em>IEEE Transactions on Neural Systems and Rehabilitation Engineering</em> (2025).</li>
+          <li>Mohsen Noghani, <strong>Ehsan Sharafian</strong>, Ben Sidaway, Babak Hejrati. &ldquo;Increasing Thigh Extension with Haptic Feedback Affects Leg Coordination in Young and Older Adult Walkers.&rdquo; <em>Journal of Biomechanics</em> (2025).</li>
+          <li><strong>Ehsan Sharafian</strong>, Maryam Ghassabzadeh, Afshin Taghvaeipour. &ldquo;Trajectory Optimization of a Spot-Welding Robot in the Joint and Cartesian Spaces.&rdquo; <em>International Journal of Robotics and Automation</em> (2023).</li>
+          <li><strong>Ehsan Sharafian</strong>, Afshin Taghvaeipour, Maryam Ghassabzadeh. &ldquo;Revisiting Screw Theory-Based Approaches in the Constraint Wrench Analysis of Robotic Systems.&rdquo; <em>Robotica</em> (2022).</li>
       </ul>
     </section>
   </main>
